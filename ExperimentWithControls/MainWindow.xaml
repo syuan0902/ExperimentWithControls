@@ -5,20 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExperimentWithControls"
         mc:Ignorable="d"
-        Title="Experiment With Controls" Height="450" Width="800">
+        Title="用5種控制項輸入數字並顯示出來" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height=".5*"/>
         </Grid.RowDefinitions>
-        <Label Content="Enter a number" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock x:Name="number" HorizontalAlignment="Center" Text="#" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" Grid.Column="1"/>
-        <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Margin="10,49,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="18" TextChanged="numberTextBox_TextChanged"/>
 
+        <Label Content="1.TextBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="2.RadioButtom" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="3.ListBox" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="4.ComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="5.Slider" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="你輸入的數字是" Grid.Column="1" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+        <TextBlock x:Name="number" HorizontalAlignment="Center" Text="#" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" Grid.Column="1" Margin="0,50,0,0"/>
+
+        <TextBox x:Name="numberTextBox" HorizontalAlignment="Left" Margin="10,50,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="18" TextChanged="numberTextBox_TextChanged" PreviewTextInput="numberTextBox_PreviewTextInput"/>
+
+        <RadioButton Content="1" Margin="200,50,0,0" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="2" Margin="240,50,0,0" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="3" Margin="280,50,0,0"
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="4" Margin="200,70,0,0" 
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton Content="5" Margin="240,70,0,0"
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <Slider x:Name="smallSlider" HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="2" VerticalAlignment="Top" Width="120" AutoToolTipPlacement="TopLeft" Maximum="5" Minimum="1" ValueChanged="smallSlider_ValueChanged"/>
+        <Slider x:Name="bigSlider" Margin="10,45,10,10" Grid.Row="2" VerticalAlignment="Top" Width="380" AutoToolTipPlacement="TopLeft" Maximum="86504006" ValueChanged="bigSlider_ValueChanged" Grid.Column="1" HorizontalAlignment="Left"/>
+
+        <ListBox x:Name="myListBox" Grid.Row="1" Margin="10,45,10,10" SelectionChanged="myListBox_SelectionChanged">
+            <ListBoxItem Content="1"/>
+            <ListBoxItem Content="2"/>
+            <ListBoxItem Content="3"/>
+            <ListBoxItem Content="4"/>
+            <ListBoxItem Content="5"/>
+        </ListBox>
+        <ComboBox x:Name="readOnlyComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="10,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="readOnlyComboBox_SelectionChanged">
+            <ListBoxItem Content="1"/>
+            <ListBoxItem Content="2"/>
+            <ListBoxItem Content="3"/>
+            <ListBoxItem Content="4"/>
+            <ListBoxItem Content="5"/>
+        </ComboBox>
+        <ComboBox x:Name="editableComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="200,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" 
+                  IsEditable="True" PreviewTextInput="numberTextBox_PreviewTextInput" TextBoxBase.TextChanged="editableComboBox_TextChanged">
+            <ListBoxItem Content="1"/>
+            <ListBoxItem Content="2"/>
+            <ListBoxItem Content="3"/>
+            <ListBoxItem Content="4"/>
+            <ListBoxItem Content="5"/>
+        </ComboBox>
+        
     </Grid>
 </Window>
